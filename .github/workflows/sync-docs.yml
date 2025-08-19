@@ -1,0 +1,78 @@
+name: Sync Avalonia Docs
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Update Avalonia docs submodule
+        run: |
+          git submodule add -f https://github.com/AvaloniaUI/avalonia-docs.git external/avalonia-docs || echo "Submodule exists"
+          cd external/avalonia-docs
+          git sparse-checkout init --cone
+          git sparse-checkout set docs
+          git fetch origin main
+          git checkout main
+
+      - name: Detect changed files
+        id: detect
+        run: |
+          cd external/avalonia-docs
+          git fetch origin main
+          if [ "$(git rev-list --count HEAD)" -gt 1 ]; then
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- docs/)
+          else
+            CHANGED_FILES=$(git diff --name-only HEAD HEAD -- docs/)
+          fi
+          echo "$CHANGED_FILES" > /tmp/changed_files.txt
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create Issue if docs changed
+        uses: actions/github-script@v7
+        if: ${{ steps.detect.outputs.changed_files != '' }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const changedFiles = `${{ steps.detect.outputs.changed_files }}`
+              .split("\n")
+              .filter(f => f.trim() !== "")
+              .join("\n");
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Avalonia docs updated",
+              body: "Changed files:\n" + changedFiles
+            });
+
+      - name: Copy changed files to repo root
+        if: ${{ steps.detect.outputs.changed_files != '' }}
+        run: |
+          cd external/avalonia-docs
+          echo "${{ steps.detect.outputs.changed_files }}" > /tmp/changed_files.txt
+          while IFS= read -r file; do
+            [ -n "$file" ] || continue
+            RELPATH="${file#docs/}"
+            mkdir -p "../../$(dirname "$RELPATH")"
+            cp "$file" "../../$RELPATH"
+          done < /tmp/changed_files.txt
+
+      - name: Commit & Push
+        if: ${{ steps.detect.outputs.changed_files != '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update Avalonia docs from main repo" || echo "No changes to commit"
+          git push
