@@ -11,19 +11,19 @@ const resourcesHTML = fs.readFileSync('./src/snippets/resources.html', 'utf-8');
 const config = {
   title: 'Avalonia Docs',
   tagline: 'Developer Documentation Portal',
-  url: 'https://docs.avaloniaui.net',
-  baseUrl: '/',
+  url: 'https://202420505.github.io/',
+  baseUrl: '/avalonia-docs-ko/',
   markdown: {
     mermaid: true,
   },
   themes: ['@docusaurus/theme-mermaid'],
-  organizationName: 'avaloniaui', // Usually your GitHub org/user name.
-  projectName: 'avalonia', // Usually your repo name.
+  organizationName: '202420505', // Usually your GitHub org/user name.
+  projectName: 'avalonia-docs-ko', // Usually your repo name.
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ru', 'zh-Hans'],
+    defaultLocale: 'kr',
+    locales: ['kr'],
   },
   headTags: [
     {
@@ -99,7 +99,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/AvaloniaUI/avalonia-docs/tree/main',
+          editUrl: 'https://github.com/202420505/avalonia-docs-ko/tree/main',
           editLocalizedFiles: true,
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
@@ -176,7 +176,7 @@ const config = {
         path: 'xpf',
         routeBasePath: 'xpf',
         sidebarPath: require.resolve('./xpf-sidebar.js'),
-        editUrl: 'https://github.com/AvaloniaUI/avalonia-docs/tree/main',
+        editUrl: 'https://github.com/202420505/avalonia-docs/tree/main',
         editLocalizedFiles: true,
       },
     ],
@@ -187,7 +187,7 @@ const config = {
         path: 'accelerate',
         routeBasePath: 'accelerate',
         sidebarPath: require.resolve('./accelerate-sidebar.js'),
-        editUrl: 'https://github.com/AvaloniaUI/avalonia-docs/tree/main',
+        editUrl: 'https://github.com/202420505/avalonia-docs/tree/main',
         editLocalizedFiles: true,
       },
     ],
