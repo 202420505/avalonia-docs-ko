@@ -3,6 +3,7 @@
   <h1 align="center">Avalonia UI Documentation</h1>
 </p>
 
+<!--
 The repository holds the code and markdown source files for the Avalonia UI documentation website, which is accessible at [docs.avaloniaui.net](https://docs.avaloniaui.net)
 
 ## Index
@@ -83,3 +84,4 @@ npx docusaurus start --locale ru
 ## Thanks 💜
 
 Thanks for all your contributions and efforts towards improving the Avalonia UI documentation. We thank you being part of our ✨ community ✨!
+-->
