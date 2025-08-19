@@ -4,7 +4,7 @@
   <ShortName>Avalonia Docs</ShortName>
   <Description>Search Avalonia Docs</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Url type="text/html" method="get" template="https://docs.avaloniaui.net/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://docs.avaloniaui.net/opensearch.xml" />
-  <moz:SearchForm>https://docs.avaloniaui.net/</moz:SearchForm>
+  <Url type="text/html" method="get" template="https://202420505.github.io/avalonia-docs-ko/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://202420505.github.io/avalonia-docs-ko/opensearch.xml" />
+  <moz:SearchForm>https://202420505.github.io/avalonia-docs-ko/</moz:SearchForm>
 </OpenSearchDescription>
