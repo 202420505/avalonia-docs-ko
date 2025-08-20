@@ -12,7 +12,7 @@ const config = {
   title: 'Avalonia Docs',
   tagline: 'Developer Documentation Portal',
   url: 'https://202420505.github.io',
-  baseUrl: '/avalonia-docs-ko',
+  baseUrl: '/avalonia-docs-ko/',
   markdown: {
     mermaid: true,
   },
