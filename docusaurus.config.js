@@ -22,8 +22,16 @@ const config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   i18n: {
-    defaultLocale: 'kr',
-    locales: ['kr'],
+    defaultLocale: 'ko',
+    locales: ['ko', 'en'],
+    localeConfigs: {
+      ko: {
+        label: '한국어',
+      },
+      en: {
+        label: 'English',
+      },
+    },
   },
   headTags: [
     {
