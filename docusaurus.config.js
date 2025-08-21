@@ -167,7 +167,7 @@ const config = {
     ],
     [
       "@gracefullight/docusaurus-plugin-microsoft-clarity",
-      { projectId: "hqhy3ac3l1" },
+      { projectId: "sy68enozk9" },
     ],
     [
       '@docusaurus/plugin-content-docs',
