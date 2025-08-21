@@ -23,13 +23,10 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   i18n: {
     defaultLocale: 'ko',
-    locales: ['ko', 'en'],
+    locales: ['ko'],
     localeConfigs: {
       ko: {
         label: '한국어',
-      },
-      en: {
-        label: 'English',
       },
     },
   },
