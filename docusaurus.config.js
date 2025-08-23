@@ -11,8 +11,8 @@ const resourcesHTML = fs.readFileSync('./src/snippets/resources.html', 'utf-8');
 const config = {
   title: 'Avalonia Docs',
   tagline: 'Developer Documentation Portal',
-  url: 'https://202420505.github.io',
-  baseUrl: '/avalonia-docs-ko/',
+  url: 'https://avalonia.rweb.site',
+  baseUrl: '/',
   markdown: {
     mermaid: true,
   },
